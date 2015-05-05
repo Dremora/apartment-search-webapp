@@ -1,0 +1,52 @@
+{{outlet}}
+
+<div style="height: 50px;">
+  <h1 id="title" style="margin: 1rem;">Apartment search
+    <small class="apartmentCount">{{count}} apartments to rent</small>
+  </h1>
+</div>
+
+<div style="float: left; width: 50%; position: absolute; top: 50px; bottom: 0; left: 0">
+
+  <div style="margin: 1rem; line-height: 35px">
+    Sort by {{view "select" content=sortByValues
+    optionLabelPath="content.name"
+    optionValuePath="content.id"
+    prompt="(nothing)"
+    selection=sortBy}}
+
+    <div style="float: right">
+      <button class="pure-button pure-button-primary" {{action 'toggleFilters'}}>{{if filters 'Hide' 'Show' }} filters</button>
+    </div>
+
+  </div>
+  <div style="position: absolute; bottom: 0; top: 60px; left: 0; right: 0; overflow: auto;">
+
+
+    {{#if filters}}
+    <div style="margin: 0 1rem">
+      {{listing-filter name="Room Types" values=roomTypes filtered=filteredRoomTypes action="filter" param="roomTypes"}}
+      {{listing-filter name="Areas" values=areas filtered=filteredAreas action="filter" param="areas"}}
+      {{listing-filter name="Postcodes" values=postcodes filtered=filteredPostcodes action="filter" param="postcodes"}}
+      {{listing-filter name="Available From" values=availableFrom filtered=filteredAvailableFrom action="filter" param="availableFrom"}}
+      {{listing-filter name="Minimum Term" values=minimumTerm filtered=filteredMinimumTerm action="filter" param="minimumTerm"}}
+      {{listing-filter name="Maximum Term" values=maximumTerm filtered=filteredMaximumTerm action="filter" param="maximumTerm"}}
+      {{listing-filter name="Furnished" values=furnished filtered=filteredFurnished action="filter" param="furnished"}}
+      {{listing-filter name="Parking" values=parking filtered=filteredParking action="filter" param="parking"}}
+      {{listing-filter name="Garage" values=garage filtered=filteredGarage action="filter" param="garage"}}
+      {{listing-filter name="Garden Or Terrace" values=gardenOrTerrace filtered=filteredGardenOrTerrace action="filter" param="gardenOrTerrace"}}
+      {{listing-filter name="Balcony or Patio" values=balcony filtered=filteredBalcony action="filter" param="balcony"}}
+      {{listing-filter name="Disabled Access" values=disabledAccess filtered=filteredDisabledAccess action="filter" param="disabledAccess"}}
+    </div>
+    {{else}}
+
+    {{listing-table listings=sortedListings sortBy='sortBy'}}
+
+    {{/if}}
+  </div>
+</div>
+
+
+<div style="position: absolute; top: 50px; right: 0; width: 50%; bottom: 0">
+  {{google-map markers=mapObjects autoFitBounds=true}}
+</div>

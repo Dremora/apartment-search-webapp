@@ -1,0 +1,46 @@
+& {
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #dadada;
+  padding: 7px 10px;
+  margin: 6px 0;
+  background: #fafafa;
+}
+
+& > ul {
+  list-style-type: none;
+  padding-left: 1rem;
+  max-height: 15rem;
+  overflow: auto;
+}
+
+& > h2 {
+  font-size: 1rem;
+  font-weight: normal;
+  margin: 0;
+}
+
+& > h2 > small.all {
+  color: #666;
+}
+
+& > h2 > small.some {
+  color: #282;
+}
+
+& > h2 > small.clear {
+  color: #282;
+  border-bottom: 1px dotted #282;
+  cursor: pointer;
+}
+
+& > h2 > small.toggle {
+  right: 0;
+}
+
+& > h2 > small.toggle > a {
+  color: inherit;
+}
+
+& > ul {
+}

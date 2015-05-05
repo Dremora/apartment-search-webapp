@@ -1,0 +1,30 @@
+<ul>
+{{#each listings as |listing|}}
+  <li style="position: relative; height: 180px; margin-bottom: 1rem; overflow: hidden;">
+    {{#each listing.photos as |photo index|}}
+      {{#if (eq index 0)}}
+        <img width="95%" src="{{photo}}">
+      {{/if}}
+    {{else}}
+      <div style="color: #666; text-align: center; line-height: 12">no photo</div>
+    {{/each}}
+    <div style="position: absolute; top: 0; height: 30px; width: 95%; background-color: rgba(0, 0, 0, 0.50); padding: 0.4rem 0.7rem; box-sizing: border-box; color: #eee">
+      £{{listing.price}}
+      <span style="float: right">
+        {{#if listing.starred}}
+          <span {{action 'star' listing}}>{{fa-icon 'fa-star'}}</span>
+        {{else}}
+          <span {{action 'star' listing}}>{{fa-icon 'fa-star-o'}}</span>
+        {{/if}}
+        <a style="color: #eee" href="http://www.spareroom.co.uk/flatshare/flatshare_detail.pl?flatshare_id={{listing.id}}" target="_blank">{{fa-icon 'external-link'}}</a>
+      </span>
+    </div>
+{{!--     <td></td> --}}
+{{!--     <td></td>
+    <td>{{listing.roomType}}</td>
+    <td>{{listing.area}}</td> --}}
+    {{!-- <td>{{listing.postcode}}</td> --}}
+
+  </li>
+{{/each}}
+</ul>

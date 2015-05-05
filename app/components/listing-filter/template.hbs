@@ -1,0 +1,21 @@
+<h2>{{name}}
+{{#if allEnabled}}
+<small class="all">(all enabled)</small>
+{{else}}
+<small class="some">({{enabledCount}} out of {{total}} enabled)</small>
+<small class="clear" {{action 'clear'}}>clear</small>
+{{/if}}
+<small class="toggle"><a href="#" {{action "toggle"}}>
+{{#if expanded}}
+{{fa-icon 'fa-angle-up'}}
+{{else}}
+{{fa-icon 'fa-angle-down'}}
+{{/if}}</a></small>
+</h2>
+{{#if expanded}}
+<ul>
+  {{#each checkedValues as |value|}}
+  <li><label>{{new-checkbox checked=value.checked value=value action="checked"}}{{value.value}}</label></li>
+  {{/each}}
+</ul>
+{{/if}}
